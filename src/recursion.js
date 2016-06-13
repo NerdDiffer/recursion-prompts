@@ -69,6 +69,32 @@ var sumBelow = function(n) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+  var results = [];
+
+  /**
+   * @param list, {Array} the list of results to build up
+   * @param decrement, {Boolean}, should we decrement `x`? Default: false
+   * @return, {Array} an array of results
+   */
+  var build = function buildResults(decrement) {
+    if (decrement === undefined) {
+      if (x === y - 1) { return results; }
+      results = results.concat([++x]);
+      return build();
+    } else {
+      if (x === y + 1) { return results; }
+      results = results.concat([--x]);
+      return build(false);
+    }
+  };
+
+  if (x < y) { // if x is lower than y
+    return build()
+  } else if (x > y) { // if x is higher than y
+    return build(false)
+  } else {
+    return results;
+  }
 };
 
 // 7. Compute the exponent of a number.
