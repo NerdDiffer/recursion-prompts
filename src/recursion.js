@@ -159,6 +159,20 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  var a = arguments[1] || 0;
+  var b = string.length - (a + 1);
+
+  // ignore spaces
+  if (string[a] === ' ') { a += 1; }
+  if (string[b] === ' ') { b -= 1; }
+
+  // compare values at these indexes AND ignore case
+  var same = string[a].toLowerCase() === string[b].toLowerCase();
+
+  if (!same) { return false; }
+  if (a === b && same) { return true; }
+
+  return palindrome(string, a + 1);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
