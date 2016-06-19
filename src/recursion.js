@@ -125,7 +125,19 @@ var exponent = function(base, x) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n) {
+var powerOfTwo = function(x) {
+  // base cases
+  if (x < 1) {
+    return false;
+  } else if (x < 3) {
+    return true;
+  }
+
+  // cut out any odd numbers
+  if (x % 2 !== 0) { return false; }
+
+  var y = x / 2;
+  return powerOfTwo(y)
 };
 
 // 9. Write a function that accepts a string a reverses it.
