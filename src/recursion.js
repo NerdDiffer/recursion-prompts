@@ -142,6 +142,19 @@ var powerOfTwo = function(x) {
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  var a = arguments[1] || 0;
+  var b = string.length - (a + 1);
+
+  if (a === b) { return string; }
+
+  // how to change a primitive? one way is to convert it to/from object
+  // swap indexes a & b
+  var arr = string.split('');
+  var temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+  string = arr.join('');
+  return reverse(string, a + 1);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
