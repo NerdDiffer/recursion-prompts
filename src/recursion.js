@@ -188,14 +188,34 @@ var modulo = function(x, y) {
   }
 
   if (x > y) {
-    if (x < 0 && y < 0) { return x; }
-
-    return modulo(x, y + y);
-  } else if (y > x) {
-    if (x < 0 && y < 0) { return x + -y; }
-
-    return x;
+    if (x < 0 && y < 0) {
+      return x;
+    } else {
+      return modulo(x, y + y);
+    }
+  } else {
+    if (x < 0 && y < 0) {
+      return x + -y;
+    } else {
+      var result = modulo(x - y, y);
+      if (x < 0) {
+        return -result;
+      } else {
+        return result;
+      }
+    }
   }
+  // var negative = x < 0;
+
+  // if (negative) { x = -x; }
+  // if (y < 0) { y = -y; }
+
+  // if (x < y) {
+  //   return negative ? -x : x;
+  // } else {
+  //   var result = modulo(x - y, y);
+  //   return negative ? -result : result;
+  // }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
